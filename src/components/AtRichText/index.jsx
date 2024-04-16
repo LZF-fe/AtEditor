@@ -32,12 +32,10 @@ const getNormalString = (htmlString) => {
 const defaultList = [{
   key: "1",
   label: "小明",
-  value: "小明",
 },
 {
   key: "2",
   label: "小李",
-  value: "小李",
 }]
 
 /**
@@ -59,7 +57,7 @@ const AtRichText = ({
   atList = defaultList,
   trigger = '@',
   placeholder = '请输入',
-  id = 'atEditorMultiple',
+  id = 'atId',
   className = '',
   style = {},
   showCount,
