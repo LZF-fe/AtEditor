@@ -1,10 +1,20 @@
 # atRichText
  
 react组件，文本输入关键词弹出列表，选中变成标签，删除一块删除，例如微信输入框艾特@
+
+
+GitHub地址：[https://github.com/LZF-fe/atRichText](https://github.com/LZF-fe/atRichText)
+
+npm地址：[https://www.npmjs.com/package/atrichtext](https://www.npmjs.com/package/atrichtext)
  
 ## 安装和使用
  
 要安装和使用这个项目，你需要按照以下步骤操作：
+
+直接  
+`npm i atrichtext`  
+
+或者：
  
 1. 克隆或下载项目代码。
 2. 在终端中进入项目目录。
