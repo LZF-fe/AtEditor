@@ -56,11 +56,56 @@ function App() {
 }
 ```
 ## 参数说明
-![alt text](ReadmeImg/image-4.png)
+ ```
+/**
+ * 
+ * @param {React.RefObject} refInstance 组件ref
+ * @param {Array} atList: 下拉框的选项
+ * @param {String} trigger: 关键字
+ * @param {String} placeholder 占位符
+ * @param {String} id id
+ * @param {String} className 样式类名
+ * @param {Object} style 样式style
+ * @param {Object} showCount 是否显示输入框字符长度、最大长度、是否显示message提示
+ * @param {Function} onInput 输入框变化时的回调
+ * @param {Function} replaceNormalToHtml 普通字符串替换成html字符串，一般用于回显
+ * @returns 
+ */
+const AtRichText = ({
+  refInstance,
+  atList = defaultList,
+  trigger = '@',
+  placeholder = '请输入',
+  id = 'atId',
+  className = '',
+  style = {},
+  showCount,
+  onInput,
+  replaceNormalToHtml = _replaceNormalToHtml
+}) => {
+
+}
+  ```
 
 
 ## 其他说明
 ### forwardRef+useImperativeHandle向外抛出了这五个方法用于获取和设置输入框的值
 ### 父组件使用：atRef.current.getHtmlData()、atRef.current.setDataFromHtml(xxx)
 
-![alt text](ReadmeImg/image-3.png)
+```
+export default memo(forwardRef(
+  (props, ref) => <AtRichText {...props} refInstance={ref} />
+))
+```
+
+```
+useImperativeHandle(refInstance, () => {
+  return {
+    getNormalData, //得到输入框显示的字符串，没经过任何包装
+    getHtmlData, //得到html字符串
+    setDataFromNormal, //把后台拿到的普通字符串赋到输入框，用于回显
+    setDataFromHtml, //把html字符串直接值赋到输入框，用于回显
+    resetData, //重置输入框
+  }
+}, []);
+```
