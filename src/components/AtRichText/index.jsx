@@ -7,7 +7,7 @@ import { message } from 'antd';
 //如果回显有其他要求，自己写回显格式要求是一定要有<span contenteditable="false" class="tagItem">xxx</span>&nbsp;
 const _replaceNormalToHtml = (text, trigger = '@') => {
   const regex = new RegExp(`${trigger}([^${trigger}]+)${trigger}`, 'g');
-  const replacedText = text.replace(regex, '<span contenteditable="false" class="tagItem">@\$1</span>&nbsp;');
+  const replacedText = text.replace(regex, `<span contenteditable="false" class="tagItem">${trigger}\$1</span>&nbsp;`);
   return replacedText;
 };
 
