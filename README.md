@@ -90,13 +90,6 @@ const AtRichText = ({
 
 ## 其他说明
 ### forwardRef+useImperativeHandle向外抛出了这五个方法用于获取和设置输入框的值
-### 父组件使用：atRef.current.getHtmlData()、atRef.current.setDataFromHtml(xxx)
-
-```
-export default memo(forwardRef(
-  (props, ref) => <AtRichText {...props} refInstance={ref} />
-))
-```
 
 ```
 useImperativeHandle(refInstance, () => {
@@ -109,3 +102,13 @@ useImperativeHandle(refInstance, () => {
   }
 }, []);
 ```
+
+```
+export default forwardRef(
+  (props, ref) => <AtRichText {...props} refInstance={ref} />
+)
+```
+### 在父组件使用：例如atRef.current.getHtmlData()、atRef.current.setDataFromHtml(xxx)
+
+----------------------
+### 有用的话点个免费的star谢谢

@@ -3,11 +3,11 @@ import AtRichText from './components/AtRichText/index';
 
 const defaultList = [{
   key: "1",
-  label: "小明",
+  label: "张三",
 },
 {
   key: "2",
-  label: "小李",
+  label: "李四",
 }]
 
 function App() {

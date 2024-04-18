@@ -31,11 +31,11 @@ const getNormalString = (htmlString) => {
 
 const defaultList = [{
   key: "1",
-  label: "小明",
+  label: "张三",
 },
 {
   key: "2",
-  label: "小李",
+  label: "李四",
 }]
 
 /**
@@ -60,17 +60,15 @@ const AtRichText = ({
   id = 'atId',
   className = '',
   style = {},
-  showCount,
+  showCount = {},
   onInput,
   replaceNormalToHtml = _replaceNormalToHtml
 }) => {
   //增量拿showCount的属性
   const {show, max, showMessage} = {
-    ...{
-      show: false,
-      max: 100,
-      showMessage: true
-    },
+    show: false,
+    max: 100,
+    showMessage: true,
     ...showCount
   }
   useImperativeHandle(refInstance, () => {
@@ -82,9 +80,9 @@ const AtRichText = ({
       resetData, //重置输入框
     }
   }, []);
-  const [atInstance, setAtInstance] = useState(null)
-  const [count, setCount] = useState(0)
-  const [nowHtmlData, setNowHtmlData] = useState('')
+  const [atInstance, setAtInstance] = useState(null) //存输入框的示例，用于添加销毁
+  const [count, setCount] = useState(0) //字符长度
+  const [nowHtmlData, setNowHtmlData] = useState('') //存当前html字符串，当超过最大长度时拿上一次的内容替换成目前的内容
 
   useEffect(() => {
     if (atList.length) {
