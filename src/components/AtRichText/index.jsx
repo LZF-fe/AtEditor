@@ -3,9 +3,9 @@ import Tribute from "tributejs";
 import './index.less';
 import { message } from 'antd';
 
-//拿到后台数据，构造格式回显
+// 拿到后台数据，构造格式回显
 //如果回显有其他要求，自己写回显格式要求是一定要有<span contenteditable="false" class="tagItem">xxx</span>&nbsp;
-const _replaceNormalToHtml = (text, trigger = '@') => {
+const _replaceNormalToHtml = (text = '', trigger = '@') => {
   const regex = new RegExp(`${trigger}([^${trigger}]+)${trigger}`, 'g');
   const replacedText = text.replace(regex, `<span contenteditable="false" class="tagItem">${trigger}\$1</span>&nbsp;`);
   return replacedText;
@@ -16,7 +16,7 @@ const _replaceNormalToHtml = (text, trigger = '@') => {
  * @param {*} htmlString html字符串
  * @returns 
  */
-const getNormalString = (htmlString) => {
+const getNormalString = (htmlString = '') => {
   // 去掉&nbsp;
   htmlString = htmlString.replace(/&nbsp;/g, '')
 
@@ -152,7 +152,7 @@ const AtRichText = ({
    * @returns 
    */
   const getHtmlData = () => {
-    const htmlData = document.getElementById(id).innerHTML;
+    const htmlData = document.getElementById(id)?.innerHTML;
     return htmlData
   }
 
@@ -161,7 +161,7 @@ const AtRichText = ({
    * @returns 
    */
   const getNormalData = () => {
-    const htmlData = document.getElementById(id).innerHTML;
+    const htmlData = document.getElementById(id)?.innerHTML;
     const data = getNormalString(htmlData);
     return data
   }
@@ -171,8 +171,11 @@ const AtRichText = ({
    * @param {*} data 目标值
    */
   const setDataFromNormal = (data) => {
-    document.getElementById(id).innerHTML = replaceNormalToHtml(data, trigger)
-    getInputLength()
+    const dom = document.getElementById(id)
+    if (dom) {
+      dom.innerHTML = replaceNormalToHtml(data, trigger)
+      getInputLength()
+    }
   }
 
   /**
