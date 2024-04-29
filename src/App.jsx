@@ -1,28 +1,29 @@
 import { useRef } from 'react'
-import AtRichText from './components/AtRichText/index';
+import AtEditor from './components/AtEditor/index';
 
-const defaultList = [{
-  key: "1",
-  label: "张三",
-},
-{
-  key: "2",
-  label: "李四",
-}]
+const defaultList = [
+  {
+      label: "小李1",
+      value: "小李1",
+  },
+  {
+      label: "小李2",
+      value: "小李2",
+  },
+];
 
 function App() {
   const atRef = useRef(null)
 
   return (
     <div>
-      <AtRichText
+      <AtEditor
         ref={atRef}
-        id='atId'
         trigger='@'
         style={{width: '400px'}}
         atList={defaultList}
       >
-      </AtRichText>
+      </AtEditor>
     </div>
   )
 }

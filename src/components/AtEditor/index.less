@@ -1,0 +1,73 @@
+.at-editor-text {
+	display: flex;
+	align-items: center;
+
+	position: relative;
+
+	background-color: #fff;
+
+	.editor-input {
+		flex: 1;
+
+		border: 1px solid #d9d9d9;
+		border-radius: 2px;
+		padding: 4px 11px;
+		
+		font-size: 15px;
+
+		outline: none;
+
+		cursor: text;
+
+		.tag-item {
+			color: #2ba6cb;
+		}
+	}
+
+	.editor-input:hover {
+		border-color: #3c98fa;
+
+		transition: all .3s;
+	}
+
+	.editor-input:focus {
+		border-color: #3c98fa;
+	}
+
+	.editor-count {
+		width: 50px;
+
+		text-align: right;
+	}
+
+	.at-list-content {
+		overflow: auto;
+
+		position: absolute;
+		z-index: 99;
+
+		border-radius: 4px;
+		padding: 4px;
+		min-width: 100px;
+		height: auto;
+
+		background-color: #fff;
+
+		box-shadow: 0 2px 8px rgba(0, 0, 0, .15);
+
+		.at-item {
+			border-radius: 4px;
+			padding: 5px 5px 5px 5px;
+			
+			cursor: pointer;
+		}
+	}
+}
+
+[contenteditable="true"]:empty:before {
+	display: block;
+
+	color: #ccc;
+
+    content: attr(placeholder);
+}
